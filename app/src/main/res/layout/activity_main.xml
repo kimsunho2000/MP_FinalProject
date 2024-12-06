@@ -1,0 +1,75 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:gravity="center"
+    android:padding="24dp"
+    tools:ignore="ExtraText">
+
+    <ImageView
+        android:id="@+id/schoolLogo"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="24dp"
+        android:contentDescription="학교 로고"
+        android:src="@drawable/school_logo" />
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:gravity="center"
+        android:paddingBottom="24dp"
+        android:text="KNU Talk"
+        android:textColor="#2C3E50"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:letterSpacing="0.05"
+        android:shadowColor="#B0BEC5"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="3" />
+
+    <Button
+        android:id="@+id/serverButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:padding="16dp"
+        android:text="서버로 시작"
+        android:textSize="18sp"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@android:color/white"
+        android:drawablePadding="8dp"
+        android:backgroundTint="@color/primary"
+        android:layout_gravity="center_horizontal" />
+
+    <Button
+        android:id="@+id/clientButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:text="클라이언트로 시작"
+        android:textSize="18sp"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@android:color/white"
+        android:drawablePadding="8dp"
+        android:backgroundTint="@color/secondary"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/footerText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select a role to start chatting"
+        android:textSize="14sp"
+        android:fontFamily="sans-serif"
+        android:textColor="@android:color/darker_gray"
+        android:paddingTop="32dp"
+        android:gravity="center" />
+</LinearLayout>
