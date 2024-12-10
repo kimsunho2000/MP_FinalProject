@@ -48,6 +48,18 @@
         android:textSize="16sp"
         android:layout_gravity="center_horizontal" />
 
+    <EditText
+        android:id="@+id/nicknameInput"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="별명 입력"
+        android:inputType="text"
+        android:layout_marginBottom="16dp"
+        android:padding="12dp"
+        android:background="@android:drawable/edit_text"
+        android:fontFamily="sans-serif"
+        android:textSize="16sp"
+        android:layout_gravity="center_horizontal" />
     <Button
         android:id="@+id/connectButton"
         android:layout_width="match_parent"
@@ -71,4 +83,5 @@
         android:textColor="@android:color/darker_gray"
         android:paddingTop="32dp"
         android:gravity="center" />
+
 </LinearLayout>

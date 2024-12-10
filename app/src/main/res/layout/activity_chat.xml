@@ -3,42 +3,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:background="@android:color/white">
+    android:padding="16dp">
 
-    <TextView
-        android:id="@+id/chatRole"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Role: Server/Client"
-        android:textSize="18sp"
-        android:textColor="@color/black"
-        android:paddingBottom="8dp"
-        android:fontFamily="sans-serif-medium" />
-
-    <ScrollView
-        android:id="@+id/chatScrollView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@android:color/darker_gray"
-        android:padding="8dp"
-        android:scrollbars="vertical">
-
-        <TextView
-            android:id="@+id/chatLog"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="monospace"
-            android:textColor="@android:color/white"
-            android:textSize="16sp" />
-    </ScrollView>
-
+    <!-- 닉네임 표시 영역 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center_vertical"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:id="@+id/nicknameLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="닉네임:"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_gravity="center_vertical"
+            android:paddingEnd="8dp"/>
+
+        <TextView
+            android:id="@+id/nicknameDisplay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="User"
+            android:textSize="16sp"
+            android:layout_gravity="center_vertical" />
+    </LinearLayout>
+
+    <!-- 채팅 메시지 RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewMessages"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="vertical" />
+
+    <!-- 메시지 입력 및 전송 버튼 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:padding="8dp">
 
         <EditText
@@ -46,23 +51,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/edit_text_background"
-            android:fontFamily="sans-serif"
-            android:hint="전송 메시지 입력"
+            android:hint="메시지 입력"
             android:padding="12dp"
-            android:textColor="@color/black"
-            android:textColorHint="@android:color/darker_gray"
-            android:textSize="16sp" />
+            android:background="@android:drawable/edit_text" />
 
         <Button
             android:id="@+id/sendMessageButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:backgroundTint="@color/primary"
-            android:fontFamily="sans-serif-medium"
-            android:text="보내기"
-            android:textColor="@android:color/white"
-            android:textStyle="bold" />
+            android:text="전송" />
     </LinearLayout>
 </LinearLayout>

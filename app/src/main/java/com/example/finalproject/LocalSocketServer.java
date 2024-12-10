@@ -53,7 +53,7 @@ public class LocalSocketServer {
                 System.out.println("클라이언트 [" + clientAddress + "]로부터 수신: " + message);
 
                 // 다른 클라이언트로 메시지 브로드캐스트
-                broadcastMessage(clientSocket, "클라이언트 [" + clientAddress + "]의 메시지: " + message);
+                broadcastMessage(clientSocket,message);
             }
         } catch (IOException e) {
             System.err.println("클라이언트 처리 중 오류 발생: " + e.getMessage());

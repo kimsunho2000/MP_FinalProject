@@ -15,21 +15,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         EditText serverIpInput = findViewById(R.id.serverIpInput);
-        Button connectButton = findViewById(R.id.connectButton); // 버튼 이름 변경: 클라이언트 연결 전용
+        EditText nicknameInput = findViewById(R.id.nicknameInput);
+        Button connectButton = findViewById(R.id.connectButton);
 
-        // 클라이언트 시작
         connectButton.setOnClickListener(v -> {
             String serverIp = serverIpInput.getText().toString().trim();
-            if (!serverIp.isEmpty()) {
-                try {
-                    Intent intent = new Intent(MainActivity.this, ChatActivity.class);
-                    intent.putExtra("serverIp", serverIp); // 서버 IP 전달
-                    startActivity(intent);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+            String nickname = nicknameInput.getText().toString().trim();
+
+            if (serverIp.isEmpty()) {
+                serverIpInput.setError("서버 IP를 입력하세요");
+            } else if (nickname.isEmpty()) {
+                nicknameInput.setError("별명을 입력하세요");
             } else {
-                serverIpInput.setError("유효한 서버 IP를 입력하세요");
+                Intent intent = new Intent(MainActivity.this,ChatActivity.class);
+                intent.putExtra("serverIp", serverIp);
+                intent.putExtra("nickname", nickname);
+                startActivity(intent);
             }
         });
     }
