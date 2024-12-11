@@ -26,6 +26,7 @@
         <!-- ChatActivity -->
         <activity
             android:name=".ChatActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
             android:exported="true" />
     </application>
 

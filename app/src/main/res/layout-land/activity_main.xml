@@ -1,0 +1,94 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/white"
+    tools:ignore="MissingDefaultResource">
+
+    <!-- 학교 로고 -->
+    <ImageView
+        android:id="@+id/schoolLogo"
+        android:layout_width="212dp"
+        android:layout_height="243dp"
+        android:contentDescription="학교 로고"
+        android:src="@drawable/school_logo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <!-- 중앙 영역 -->
+    <LinearLayout
+        android:id="@+id/centerContent"
+        android:layout_width="434dp"
+        android:layout_height="297dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.945"
+        app:layout_constraintStart_toEndOf="@id/schoolLogo"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- 제목 -->
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingBottom="24dp"
+            android:text="KNU Talk"
+            android:textColor="#2C3E50"
+            android:textSize="36sp"
+            android:textStyle="bold" />
+
+        <!-- 서버 IP 입력 -->
+        <EditText
+            android:id="@+id/serverIpInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@android:drawable/edit_text"
+            android:hint="서버 IP 입력"
+            android:inputType="text"
+            android:padding="12dp" />
+
+        <!-- 별명 입력 -->
+        <EditText
+            android:id="@+id/nicknameInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:background="@android:drawable/edit_text"
+            android:hint="별명 입력"
+            android:inputType="text"
+            android:padding="12dp" />
+
+        <!-- 서버 연결 버튼 -->
+        <Button
+            android:id="@+id/connectButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:backgroundTint="@color/primary"
+            android:text="서버 연결"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+
+        <!-- 설명 텍스트 -->
+        <TextView
+            android:id="@+id/footerText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:text="Enter the server IP to start chatting"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="14sp" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
