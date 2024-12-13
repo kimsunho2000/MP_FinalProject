@@ -13,7 +13,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Finalproject">
 
-        <!-- MainActivity -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -23,7 +22,6 @@
             </intent-filter>
         </activity>
 
-        <!-- ChatActivity -->
         <activity
             android:name=".ChatActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"

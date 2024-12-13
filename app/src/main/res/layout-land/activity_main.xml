@@ -8,7 +8,6 @@
     android:background="@color/white"
     tools:ignore="MissingDefaultResource">
 
-    <!-- 학교 로고 -->
     <ImageView
         android:id="@+id/schoolLogo"
         android:layout_width="212dp"
@@ -20,7 +19,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5" />
 
-    <!-- 중앙 영역 -->
     <LinearLayout
         android:id="@+id/centerContent"
         android:layout_width="434dp"
@@ -34,7 +32,6 @@
         app:layout_constraintStart_toEndOf="@id/schoolLogo"
         app:layout_constraintTop_toTopOf="parent">
 
-        <!-- 제목 -->
         <TextView
             android:id="@+id/titleText"
             android:layout_width="wrap_content"
@@ -46,7 +43,6 @@
             android:textSize="36sp"
             android:textStyle="bold" />
 
-        <!-- 서버 IP 입력 -->
         <EditText
             android:id="@+id/serverIpInput"
             android:layout_width="match_parent"
@@ -57,7 +53,6 @@
             android:inputType="text"
             android:padding="12dp" />
 
-        <!-- 별명 입력 -->
         <EditText
             android:id="@+id/nicknameInput"
             android:layout_width="match_parent"
@@ -68,7 +63,6 @@
             android:inputType="text"
             android:padding="12dp" />
 
-        <!-- 서버 연결 버튼 -->
         <Button
             android:id="@+id/connectButton"
             android:layout_width="match_parent"
@@ -79,7 +73,6 @@
             android:textColor="@android:color/white"
             android:textSize="18sp" />
 
-        <!-- 설명 텍스트 -->
         <TextView
             android:id="@+id/footerText"
             android:layout_width="wrap_content"

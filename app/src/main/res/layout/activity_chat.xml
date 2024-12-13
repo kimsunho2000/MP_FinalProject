@@ -5,7 +5,6 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- 닉네임 표시 영역 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,7 +30,6 @@
             android:layout_gravity="center_vertical" />
     </LinearLayout>
 
-    <!-- 채팅 메시지 RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewMessages"
         android:layout_width="match_parent"
@@ -39,7 +37,6 @@
         android:layout_weight="1"
         android:scrollbars="vertical" />
 
-    <!-- 메시지 입력 및 전송 버튼 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

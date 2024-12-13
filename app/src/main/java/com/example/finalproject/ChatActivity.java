@@ -19,7 +19,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChatActivity extends AppCompatActivity {
+public class ChatActivity extends AppCompatActivity { //채팅 시작했을때의 엑티비티
 
     private TextView nicknameDisplay;
     private RecyclerView recyclerViewMessages;
@@ -45,13 +45,13 @@ public class ChatActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
 
-        // UI 요소 초기화
+        // UI 요소 초기화 및 바인딩
         nicknameDisplay = findViewById(R.id.nicknameDisplay);
         recyclerViewMessages = findViewById(R.id.recyclerViewMessages);
         messageInput = findViewById(R.id.messageInput);
         sendMessageButton = findViewById(R.id.sendMessageButton);
 
-        // RecyclerView 설정
+        // RecyclerView 설정,MessageAdapter를 활용하여 메모리 절약 및 스크롤 뷰에 적용
         messageAdapter = new MessageAdapter(messageList);
         recyclerViewMessages.setLayoutManager(new LinearLayoutManager(this));
         recyclerViewMessages.setAdapter(messageAdapter);
@@ -62,7 +62,7 @@ public class ChatActivity extends AppCompatActivity {
         if (nickname == null || nickname.isEmpty()) {
             nickname = isServer ? "Server" : "Client";
         }
-        nicknameDisplay.setText(nickname);
+        nicknameDisplay.setText(nickname); //디스플레아에 닉네임 표시
 
         // 화면 회전 데이터 복원
         if (savedInstanceState != null) {
@@ -87,9 +87,7 @@ public class ChatActivity extends AppCompatActivity {
         sendMessageButton.setOnClickListener(v -> sendMessage());
     }
 
-    /**
-     * 서버 초기화
-     */
+    //서버 초기화
     private void initializeServer() {
         if (isConnected) return; // 이미 연결 상태라면 초기화하지 않음
 
@@ -111,9 +109,7 @@ public class ChatActivity extends AppCompatActivity {
         }).start();
     }
 
-    /**
-     * 클라이언트 초기화
-     */
+    //클라이언트 초기화
     private void initializeClient(String serverIp) {
         if (isConnected) return; // 이미 연결 상태라면 초기화하지 않음
 
@@ -133,9 +129,7 @@ public class ChatActivity extends AppCompatActivity {
         }).start();
     }
 
-    /**
-     * 스트림 설정
-     */
+    //스트림 설정,소켓과 서버를 연결하는 파이프
     private void setupStreams() {
         try {
             output = new PrintWriter(new OutputStreamWriter(socket.getOutputStream()), true);
@@ -146,9 +140,7 @@ public class ChatActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * 메시지 수신
-     */
+   //메세지 수신 모듈
     private void listenForMessages() {
         try {
             String message;
@@ -161,9 +153,7 @@ public class ChatActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * 메시지 전송
-     */
+    //메세지 전송 모듈
     private void sendMessage() {
         String message = messageInput.getText().toString();
         if (!message.isEmpty() && output != null) {
@@ -181,9 +171,7 @@ public class ChatActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * 메시지 추가
-     */
+    //메세지 추가 모듈
     private void appendMessage(Message message) {
         runOnUiThread(() -> {
             messageList.add(message);
@@ -192,9 +180,7 @@ public class ChatActivity extends AppCompatActivity {
         });
     }
 
-    /**
-     * 화면 회전 시 데이터 저장
-     */
+    //화면 회전시 데이터 저장
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -202,9 +188,7 @@ public class ChatActivity extends AppCompatActivity {
         outState.putBoolean("isConnected", isConnected);
     }
 
-    /**
-     * 소켓 닫기
-     */
+    //소켓 닫는 모듈
     private void closeSocket() {
         try {
             if (socket != null && !socket.isClosed()) {

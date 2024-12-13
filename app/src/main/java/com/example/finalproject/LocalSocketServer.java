@@ -1,3 +1,4 @@
+/* ----- 서버 구동 자바 코드 ----- */
 package com.example.finalproject;
 
 import java.io.*;
@@ -7,18 +8,15 @@ import java.util.concurrent.*;
 
 public class LocalSocketServer {
 
-    private static final int PORT = 12345; // 서버 포트 번호
+    private static final int PORT = 12345; // 서버 포트 번호 설정(중복시 변경하면됨)
     private final Set<Socket> clientSockets = ConcurrentHashMap.newKeySet(); // 연결된 클라이언트 소켓 관리
 
     public static void main(String[] args) {
         new LocalSocketServer().startServer();
     }
 
-    /**
-     * 서버 시작 메서드
-     */
-    public void startServer() {
-        System.out.println("=== 서버 초기화 ===");
+    public void startServer() { //서버 시작 모듈
+        System.out.println("------ 서버 초기화 -----");
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
             System.out.println("서버가 포트 " + PORT + "에서 대기 중입니다...");
 
@@ -28,7 +26,7 @@ public class LocalSocketServer {
 
                 clientSockets.add(clientSocket); // 클라이언트 소켓 추가
 
-                // 각 클라이언트를 별도의 스레드에서 처리
+                // 각 클라이언트를 별도의 스레드에서 처리,자바는 스레드에서 네트워크 프로세스를 처리해야함.
                 new Thread(() -> handleClient(clientSocket)).start();
             }
         } catch (IOException e) {
@@ -37,10 +35,7 @@ public class LocalSocketServer {
         }
     }
 
-    /**
-     * 클라이언트 처리 메서드
-     */
-    private void handleClient(Socket clientSocket) {
+    private void handleClient(Socket clientSocket) { //클라이언트를 처리하는 메소드
         try (
                 BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                 PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true)
@@ -52,7 +47,7 @@ public class LocalSocketServer {
             while ((message = in.readLine()) != null) {
                 System.out.println("클라이언트 [" + clientAddress + "]로부터 수신: " + message);
 
-                // 다른 클라이언트로 메시지 브로드캐스트
+                // 다른 클라이언트로 메시지 브로드캐스트,Broadcast주소를 사용(?)
                 broadcastMessage(clientSocket,message);
             }
         } catch (IOException e) {
@@ -69,12 +64,9 @@ public class LocalSocketServer {
         }
     }
 
-    /**
-     * 메시지를 모든 클라이언트에게 브로드캐스트
-     */
-    private void broadcastMessage(Socket sender, String message) {
+    private void broadcastMessage(Socket sender, String message) { //메세지 브로드캐스팅
         for (Socket client : clientSockets) {
-            if (client != sender) { // 메시지를 보낸 클라이언트는 제외
+            if (client != sender) { // 메시지를 보낸 클라이언트는 제외하고 나머지 클라이언트에만 전송
                 try {
                     PrintWriter out = new PrintWriter(client.getOutputStream(), true);
                     out.println(message);

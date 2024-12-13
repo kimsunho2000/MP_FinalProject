@@ -1,3 +1,4 @@
+/* ----- 시작 화면 액티비티 ----- */
 package com.example.finalproject;
 
 import android.content.Intent;
@@ -18,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         EditText nicknameInput = findViewById(R.id.nicknameInput);
         Button connectButton = findViewById(R.id.connectButton);
 
-        connectButton.setOnClickListener(v -> {
+        connectButton.setOnClickListener(v -> { //서버 IP,닉네임 저장
             String serverIp = serverIpInput.getText().toString().trim();
             String nickname = nicknameInput.getText().toString().trim();
 
