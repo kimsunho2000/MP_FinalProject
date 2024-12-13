@@ -10,6 +10,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+    /* 현재 구현된 사항으로는 안드로이드의 loopback address인 10.0.2.2로 소켓통신이 가능함
+    별도의 포트포워딩을 통해 다른 네트워크와 통신 가능(미구현)
+     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
